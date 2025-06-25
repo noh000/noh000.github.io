@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 활용 전문가 포트폴리오</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(45deg, #22c55e, #16a34a);
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            color: white;
+            font-weight: bold;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 1.3em;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #555;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .section h2 {
+            font-size: 2em;
+            margin-bottom: 25px;
+            color: #22c55e;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section h2::before {
+            content: '';
+            width: 4px;
+            height: 40px;
+            background: linear-gradient(45deg, #22c55e, #16a34a);
+            border-radius: 2px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .skill-category {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border-radius: 15px;
+            padding: 25px;
+            border-left: 5px solid #22c55e;
+        }
+
+        .skill-category h3 {
+            color: #1e293b;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            padding: 8px 0;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .skill-list li::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: #22c55e;
+            font-size: 0.8em;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(45deg, #22c55e, #16a34a);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin-left: 20px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -35px;
+            top: 30px;
+            width: 12px;
+            height: 12px;
+            background: #22c55e;
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px #22c55e;
+        }
+
+        .timeline-date {
+            color: #22c55e;
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+
+        .timeline-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #1e293b;
+        }
+
+        .timeline-desc {
+            color: #64748b;
+            line-height: 1.8;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .project-card {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border-radius: 15px;
+            padding: 25px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(34, 197, 94, 0.2);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-card h3 {
+            color: #22c55e;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .project-card p {
+            color: #64748b;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            background: rgba(34, 197, 94, 0.1);
+            color: #16a34a;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            border: 1px solid rgba(34, 197, 94, 0.3);
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.1) 0%, rgba(22, 163, 74, 0.05) 100%);
+            border: 2px solid rgba(34, 197, 94, 0.3);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 25px 0;
+            text-align: center;
+        }
+
+        .highlight-box h3 {
+            color: #16a34a;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+
+        .highlight-box p {
+            color: #374151;
+            font-size: 1.1em;
+            line-height: 1.8;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+            
+            .skills-grid,
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .section {
+                padding: 25px;
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.8s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <header class="header fade-in">
+            <div class="profile-img">AI</div>
+            <h1>김○○</h1>
+            <p class="subtitle">AI 활용 경영지원 전문가</p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span>📧</span>
+                    <span>your.email@example.com</span>
+                </div>
+                <div class="contact-item">
+                    <span>📱</span>
+                    <span>010-0000-0000</span>
+                </div>
+                <div class="contact-item">
+                    <span>📍</span>
+                    <span>서울, 대한민국</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- About Section -->
+        <section class="section fade-in">
+            <h2>🎯 소개</h2>
+            <p style="font-size: 1.1em; line-height: 1.8; color: #374151;">
+                총무 및 경영지원 분야에서 쌓은 전문성을 바탕으로, <strong>AI 기술을 활용한 업무 혁신</strong>에 도전하고 있습니다. 
+                3개월간의 집중적인 AI 교육과정을 통해 데이터 분석, 자동화, 그리고 인공지능 도구들을 경영지원 업무에 
+                효과적으로 적용하는 방법을 학습하고 있습니다.
+            </p>
+            
+            <div class="highlight-box">
+                <h3>🚀 비전</h3>
+                <p>AI를 활용하여 기존 총무·경영지원 업무의 효율성을 극대화하고, 데이터 기반의 의사결정을 지원하는 전문가가 되겠습니다.</p>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section class="section fade-in">
+            <h2>📚 교육과정</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2025년 (3개월 과정)</div>
+                    <div class="timeline-title">AI 전문가 양성 교육과정</div>
+                    <div class="timeline-desc">
+                        <strong>기술적 근본:</strong> CLI, Git/Github, Python을 통한 프로그래밍 기초<br>
+                        <strong>데이터 분석:</strong> Google Spreadsheet, SQL, RDBMS를 활용한 데이터 처리<br>
+                        <strong>웹 개발:</strong> HTTP/Web, 웹 스크래핑, 마크업 언어 습득<br>
+                        <strong>AI/ML 실무:</strong> Python 데이터 분석, 머신러닝 기초, GPT/LLM 활용<br>
+                        <strong>프로젝트:</strong> 데이터 분석, 머신러닝, 종합 프로젝트 수행
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section class="section fade-in">
+            <h2>💡 보유 기술 및 학습 영역</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>🛠️ 기술적 근본</h3>
+                    <ul class="skill-list">
+                        <li>CLI (Command Line Interface)</li>
+                        <li>Git, Github 버전 관리</li>
+                        <li>Python 프로그래밍</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>📊 데이터 분석</h3>
+                    <ul class="skill-list">
+                        <li>Google Spreadsheet 고급 활용</li>
+                        <li>SQL, RDBMS 데이터베이스</li>
+                        <li>Python 데이터 분석 (Numpy, Pandas)</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>🌐 웹 개발 기본</h3>
+                    <ul class="skill-list">
+                        <li>HTTP, Web 프로토콜</li>
+                        <li>웹 스크래핑 기술</li>
+                        <li>마크업 언어 활용</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>🤖 AI/ML 활용</h3>
+                    <ul class="skill-list">
+                        <li>머신러닝 학습</li>
+                        <li>GPT/LLM 모델 활용</li>
+                        <li>데이터 시각화</li>
+                        <li>EDA(탐색적 데이터 분석)</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>🏢 경영지원 전문성</h3>
+                    <ul class="skill-list">
+                        <li>총무 업무 전반</li>
+                        <li>경영지원 시스템 관리</li>
+                        <li>업무 프로세스 개선</li>
+                        <li>데이터 기반 의사결정 지원</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>🔬 AI 고급 활용</h3>
+                    <ul class="skill-list">
+                        <li>LangGraph 프레임워크</li>
+                        <li>RAG(검색증강생성) 시스템</li>
+                        <li>실시간 데이터 분석</li>
+                        <li>LLM Agent 개발</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Career Vision Section -->
+        <section class="section fade-in">
+            <h2>🎯 커리어 비전</h2>
+            <div class="project-grid">
+                <div class="project-card">
+                    <h3>📈 데이터 기반 경영지원</h3>
+                    <p>기존 총무 업무에서 발생하는 다양한 데이터를 AI 도구로 분석하여, 경영진의 의사결정을 지원하는 인사이트를 제공합니다.</p>
+                    <div class="project-tags">
+                        <span class="tag">데이터 분석</span>
+                        <span class="tag">경영지원</span>
+                        <span class="tag">의사결정</span>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <h3>🤖 업무 자동화</h3>
+                    <p>반복적인 총무 업무를 AI와 자동화 도구를 활용하여 효율화하고, 더 가치 있는 업무에 집중할 수 있는 환경을 구축합니다.</p>
+                    <div class="project-tags">
+                        <span class="tag">업무자동화</span>
+                        <span class="tag">프로세스개선</span>
+                        <span class="tag">효율성</span>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <h3>💡 AI 컨설팅</h3>
+                    <p>총무·경영지원 분야의 실무 경험과 AI 기술을 결합하여, 다른 조직의 디지털 전환을 도우는 컨설팅 서비스를 제공합니다.</p>
+                    <div class="project-tags">
+                        <span class="tag">AI컨설팅</span>
+                        <span class="tag">디지털전환</span>
+                        <span class="tag">업무혁신</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Goals Section -->
+        <section class="section fade-in">
+            <h2>🚀 목표 및 계획</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">단기 목표 (6개월)</div>
+                    <div class="timeline-title">AI 기술 습득 완료</div>
+                    <div class="timeline-desc">
+                        3개월 교육과정 완료 후, 실무에 직접 적용 가능한 AI 도구들을 활용하여 
+                        기존 총무 업무의 효율성을 20% 이상 향상시키는 것을 목표로 합니다.
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">중기 목표 (1년)</div>
+                    <div class="timeline-title">AI 활용 전문가 포지셔닝</div>
+                    <div class="timeline-desc">
+                        조직 내에서 AI를 활용한 경영지원 업무의 선도자가 되어, 
+                        다른 부서의 디지털 전환을 지원하는 역할을 수행합니다.
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">장기 목표 (3년)</div>
+                    <div class="timeline-title">AI 기반 경영지원 컨설턴트</div>
+                    <div class="timeline-desc">
+                        총무·경영지원 분야의 AI 전문가로서 독립적인 컨설팅 서비스를 제공하거나, 
+                        전문 컨설팅 기업에서 AI 솔루션 설계 업무를 담당합니다.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="section fade-in">
+            <h2>📞 연락처</h2>
+            <div style="text-align: center; font-size: 1.1em; color: #374151;">
+                <p style="margin-bottom: 15px;">AI를 활용한 경영지원 혁신에 관심이 있으시거나, 협업 기회에 대해 논의하고 싶으시다면 언제든 연락해 주세요.</p>
+                <div class="contact-info" style="justify-content: center; margin-top: 25px;">
+                    <div class="contact-item" style="font-size: 1.1em;">
+                        <span>📧</span>
+                        <span>your.email@example.com</span>
+                    </div>
+                    <div class="contact-item" style="font-size: 1.1em;">
+                        <span>📱</span>
+                        <span>010-0000-0000</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // 페이지 로드 시 애니메이션 효과
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('.section');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animation = 'fadeIn 0.8s ease-in';
+                    }
+                });
+            });
+            
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+
+        // 프로젝트 카드 호버 효과
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-8px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
